@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 * {
     border: 0;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Jura", sans-serif;
+     font-family: "Lexend", sans-serif;
 }
 
 a {
@@ -14,7 +14,6 @@ a {
 
 body {
     height: 100vh;
-    overflow: hidden;
 }
 
 header {
@@ -25,13 +24,13 @@ header {
     border-radius: 20px;
     top: 0;
     min-height: 10%;
+    max-height: 100px;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 header a {
     color: black;
     font-size: 20px;
-    font-weight: 600;
-
 }
 
 header .now {
@@ -53,23 +52,20 @@ header .container .logo img {
 }
 
 header .container .pages,
-.box {
+.red_box {
     display: flex;
     gap: 100px;
     align-items: center;
 }
 
-header .container .box {
+header .container .red_box {
     border: 2px solid red;
     border-radius: 20px;
     padding: 15px 25px;
 }
 
-
 footer {
-    background-color: rgb(161, 12, 12);
-    bottom: 0;
-    position: fixed;
+    background-color: rgb(255, 255, 255);
     width: 100%;
     height: 70px;
     align-items: center;
@@ -80,81 +76,3 @@ footer {
     font-weight: 600;
 }
 
-main {
-    background-image: url(../assets/img/FUNDO.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-main .container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-main .container .modal {
-    background-color: white;
-    width: 30%;
-    height: 50%;
-    border-radius: 20px;
-    border: 3px solid #D40C00;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-
-main .container .modal .titulo {
-    font-size: 30px;
-}
-
-main .container .modal input {
-    border: 2px solid #D40C00;
-    border-radius: 20px;
-    padding: 10px 30px;
-    margin-top: 10px;
-    font-size: 15px;
-    color: black;
-}
-
-main .container .modal .inputs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5%;
-}
-
-main .container .modal .botao {
-    margin-top: 5%;
-}
-
-main .container .modal .botao button {
-    background-color: #D40C00;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-
-}
-
-main .container .modal .botao button:hover {
-    background-color: #d40b0094;
-}
-
-main .container .modal .msg {
-    margin-top: 2%;
-}
-
-main .container .modal .msg a {
-    color: black;
-    border-bottom: 1px solid black;
-}
