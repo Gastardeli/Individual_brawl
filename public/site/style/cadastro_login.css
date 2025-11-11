@@ -40,6 +40,8 @@ main .container .modal input {
     margin-top: 10px;
     font-size: 15px;
     color: black;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 main .container .modal .inputs {
