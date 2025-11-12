@@ -124,6 +124,8 @@ main .container .principais_modos .sections .sub_sections {
 
 main .container .principais_modos .sections .sub_sections .conteudo {
     width: 65%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 main .container .principais_modos .sections .sub_sections .conteudo .texto {
@@ -131,6 +133,7 @@ main .container .principais_modos .sections .sub_sections .conteudo .texto {
     color: white;
     text-align: justify;
     margin-top: 3%;
+    
 }
 
 main .container .principais_modos .sections .sub_sections .conteudo .titulo {
