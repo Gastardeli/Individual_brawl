@@ -4,24 +4,28 @@ main {
     min-height: 100vh;
     padding-top: 100px;
 }
-main .container{
+
+main .container {
     width: 100%;
     height: 100%;
-    padding: 0px 100px;
     margin-top: 3%;
 }
-main .container .conta{
+
+main .container .conta {
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 0px 100px;
 }
-main .container .conta .titulo{
+
+main .container .conta .titulo {
     font-size: 30px;
     color: white;
     margin-left: 15%;
     margin-bottom: 5px;
 }
-main .container .conta .imgs{
+
+main .container .conta .imgs {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,19 +33,160 @@ main .container .conta .imgs{
     color: white;
     gap: 20px;
 }
-main .container .conta .imgs img{
+
+main .container .conta .imgs img {
     border-radius: 20px;
     border: 2px solid black;
 }
 
-main .container .sobre_conta .titulo{
+main .container .sobre_conta {
+    padding: 0px 100px;
+}
+
+main .container .sobre_conta .titulo {
     margin-top: 3%;
     font-size: 30px;
     color: white;
 }
-main .container .sobre_conta p{
+
+main .container .sobre_conta p {
     font-size: 20px;
     color: white;
 }
 
+main .container .favorito {
+    background-color: #50342C;
+    width: 100%;
+    padding: 0px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 10px solid white;
+    border-top: 10px solid white;
+    margin-top: 3%;
+    gap: 30px;
+}
 
+main .container .favorito .titulo {
+    font-size: 40px;
+    color: white;
+}
+
+main .container .favorito select {
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    border: 2px solid black;
+    font-size: 20px;
+    text-align: center;
+}
+
+main .container .favorito .box {
+    background-color: #FF9A00;
+    width: 70%;
+    border-radius: 20px;
+    border: 5px solid white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+main .container .favorito .cima {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2%;
+    font-weight: 1000;
+}
+
+main .container .favorito .cima .personagem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+}
+
+main .container .favorito .cima .personagem .img_perso {
+    width: 400px;
+    border-bottom: 5px solid white;
+}
+
+main .container .favorito .cima .direita {
+    width: 20%;
+    gap: 20px;
+}
+
+main .container .favorito .cima .direita .trofeus {
+    display: flex;
+    color: white;
+    flex-direction: column;
+}
+
+main .container .favorito .cima .direita .trofeus .box_num {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    gap: 10px;
+    margin-top: 3%;
+}
+
+main .container .favorito .cima .direita .trofeus .icon_trofeu {
+    width: 70px;
+}
+
+main .container .favorito .cima .direita .funcao {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 40px;
+    margin-top: 10%;
+}
+
+main .container .favorito .cima .direita .box_poderes {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white;
+    padding: 15px;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+main .container .favorito .cima .direita .box_poderes .um {
+    width: 80px;
+    height: 80px;
+}
+
+main .container .favorito .cima .direita .box_poderes .dois {
+    width: 60px;
+    height: 60px;
+}
+
+main .container .favorito .cima .direita .box_poderes .engrenagens {
+    display: flex;
+    flex-direction: column;
+    max-width: 35px;
+}
+
+main .container .favorito .baixo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3%;
+    margin-top: 2%;
+}
+main .container .favorito .baixo .titulo{
+    font-weight: 1000;
+}
+
+main .container .favorito .baixo .box {
+    padding: 10px;
+    width: 80%;
+    height: 100px;
+    text-align: justify;
+    font-size: 20px;
+    color: white;
+}
