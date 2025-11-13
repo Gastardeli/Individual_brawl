@@ -152,22 +152,28 @@ main .container .favorito .cima .direita .box_poderes {
     gap: 6px;
     justify-content: center;
     margin-top: 10%;
+    width: 200px;
 }
 
 main .container .favorito .cima .direita .box_poderes .um {
-    width: 80px;
-    height: 80px;
+    width: 30%;
+    height: 30%;
 }
 
 main .container .favorito .cima .direita .box_poderes .dois {
-    width: 60px;
-    height: 60px;
+    width: 30%;
+    height: 30%;
 }
 
 main .container .favorito .cima .direita .box_poderes .engrenagens {
     display: flex;
     flex-direction: column;
-    max-width: 35px;
+    width: 33%;
+    height: 33%;
+}
+
+main .container .favorito .cima .direita .box_poderes .engrenagens .tres {
+    width: 30px;
 }
 
 main .container .favorito .baixo {
@@ -178,7 +184,8 @@ main .container .favorito .baixo {
     margin-bottom: 3%;
     margin-top: 2%;
 }
-main .container .favorito .baixo .titulo{
+
+main .container .favorito .baixo .titulo {
     font-weight: 1000;
 }
 
