@@ -21,7 +21,7 @@ main .container .conta {
 main .container .conta .titulo {
     font-size: 30px;
     color: white;
-    margin-left: 15%;
+    margin-left: 17.5%;
     margin-bottom: 5px;
 }
 
@@ -37,21 +37,38 @@ main .container .conta .imgs {
 main .container .conta .imgs img {
     border-radius: 20px;
     border: 2px solid black;
+    width: 65%;
 }
 
 main .container .sobre_conta {
     padding: 0px 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 main .container .sobre_conta .titulo {
     margin-top: 3%;
     font-size: 30px;
     color: white;
+    display: flex;
+    width: 80%;
+    justify-content: left;
 }
+
 
 main .container .sobre_conta p {
     font-size: 20px;
     color: white;
+    text-align: justify;
+    width: 80%;
+    
+}
+main .container .sobre_conta p span {
+    font-size: 20px;
+    color: orange;
 }
 
 main .container .favorito {
@@ -65,12 +82,15 @@ main .container .favorito {
     border-top: 10px solid white;
     margin-top: 3%;
     gap: 30px;
+    min-height: 700px;
+   
 }
 
 main .container .favorito .titulo {
     font-size: 40px;
     color: white;
 }
+
 
 main .container .favorito select {
     width: 200px;
@@ -89,6 +109,8 @@ main .container .favorito .box {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 3%;
+    
 }
 
 main .container .favorito .cima {
@@ -131,15 +153,16 @@ main .container .favorito .cima .direita .trofeus .box_num {
 }
 
 main .container .favorito .cima .direita .trofeus .icon_trofeu {
+    display: flex;
+    align-items: center;
+    color: white;
     width: 70px;
 }
 
 main .container .favorito .cima .direita .funcao {
     display: flex;
-    align-items: center;
-    color: white;
-    font-size: 40px;
-    margin-top: 10%;
+    font-size: 220%;
+    margin-top: 10%;color: white;
 }
 
 main .container .favorito .cima .direita .box_poderes {
@@ -148,11 +171,11 @@ main .container .favorito .cima .direita .box_poderes {
     border: 2px solid black;
     border-radius: 20px;
     background-color: white;
-    padding: 15px;
+    padding: 20px;
     gap: 6px;
     justify-content: center;
     margin-top: 10%;
-    width: 200px;
+    width: 250px;
 }
 
 main .container .favorito .cima .direita .box_poderes .um {
