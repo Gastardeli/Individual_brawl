@@ -3,80 +3,140 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AquaTech | Página Inicial</title>
-
-    <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
-    </div>
-  
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/img/LOGO.png" alt="">
+            </div>
+            <div class="pages">
+                <a href="#" class="now">Home</a>
+                <a href="conta.html">Conta</a>
+                |
+                <div class="red_box">
+                    <a href="login.html">Login</a>
+                    <a href="cadastro.html">Cadastro</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-    </div>
-  </body>
+    </header>
+    <main>
+        <div class="container">
+            <div class="sobre">
+                <div class="esquerda">
+                    <div class="titulo">
+                        <p>O que é?</p>
+                    </div>
+                    <div class="texto">
+                        <p>
+                            Brawl Stars é um jogo eletrônico desenvolvido para dispositivos móveis, como celulares e
+                            tablets. Ele combina elementos de jogos de tiro com o estilo battle royale. O principal
+                            objetivo é participar de batalhas em diferentes modos de jogo, utilizando uma variedade de
+                            personagens denominados Brawlers, cada um com características e habilidades únicas.
+                            Durante as partidas, o jogador pode conquistar ou perder troféus conforme seu desempenho,
+                            sendo essa pontuação utilizada como medida de habilidade.
+                            Além disso, o jogo dispõe de um modo competitivo no qual, em vez de troféus, o jogador
+                            acumula pontos para definir sua posição no ranking.
+                        </p>
+                    </div>
+                </div>
+                <div class="img">
+                    <img src="assets/img/elprimo.png" alt="">
+                </div>
+            </div>
+            <div class="como_funciona">
+                <div class="titulo_um">Como funciona?</div>
+                <div class="boxes">
+                    <div class="box">
+                        <div class="img">
+                            <img src="assets/icon/logo_icon.png" alt="">
+                        </div>
+                        <div class="titulo">Modos</div>
+                        <div class="texto">O jogo apresenta diversos modos de partida, sendo alguns permanentes e outros
+                            sazonais, que podem ser disputados em equipes compostas por três ou cinco jogadores. De
+                            maneira
+                            geral, todos os modos possuem o mesmo objetivo: acumular pontos ou troféus, conforme o
+                            desempenho dos participantes.
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="img">
+                            <img src="assets/icon/griff_icon.png" alt="">
+                        </div>
+                        <div class="titulo">Brawlers</div>
+                        <div class="texto">
+                            Atualmente, o jogo conta com 96 Brawlers, que são os personagens jogáveis. Cada um deles
+                            possui
+                            habilidades e funções únicas, desempenhando diferentes papéis nas partidas, como suporte,
+                            ataque, tanque, entre outros.
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="img">
+                            <img src="assets/icon/icon_trofeu.png" alt="">
+                        </div>
+                        <div class="titulo">Ranking</div>
+                        <div class="texto">O sistema de ranking é estruturado de duas maneiras. A primeira baseia-se na
+                            soma
+                            total de troféus acumulados, que correspondem à quantidade de troféus obtidos por cada
+                            Brawler
+                            individualmente. Em outras palavras, cada personagem possui sua própria pontuação, e essa
+                            soma
+                            contribui para o ranking geral do jogador.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="principais_modos">
+                <div class="titulo_um">Principais Modos de jogo</div>
+                <div class="sections">
+                    <div class="sub_sections">
+                        <img src="assets/img/fute_brawl.png" alt="">
+                        <div class="conteudo">
+                            <div class="titulo">Fute Brawl</div>
+                            <div class="texto">Nesse modo, duas equipes com três jogadores cada competem entre si com o
+                                objetivo de marcar gols utilizando as habilidades de seus Brawlers. Vence a equipe que
+                                conseguir marcar dois gols antes do término da partida ou que tiver mais pontos ao final
+                                do tempo. O trabalho em equipe e o posicionamento estratégico são fundamentais para a
+                                vitória.</div>
+                        </div>
+                    </div>
+                    <div class="sub_sections">
+                        <div class="conteudo">
+                            <div class="titulo">Pique-gema</div>
+                            <div class="texto">No Pique-Gema, duas equipes de três jogadores disputam o controle de uma
+                                mina central que gera gemas periodicamente. O objetivo é coletar e manter dez gemas até
+                                o final da contagem regressiva. Caso um jogador seja eliminado, suas gemas caem no chão
+                                e podem ser recuperadas por outros. Esse modo exige cooperação, domínio de área e boa
+                                coordenação entre os membros da equipe.</div>
+                        </div>
+                        <img src="assets/img/pique_gema.png" alt="">
+                    </div>
+                    <div class="sub_sections">
+                        <img src="assets/img/combate.png" alt="">
+                        <div class="conteudo">
+                            <div class="titulo">Combate</div>
+                            <div class="texto">O modo Combate segue o estilo battle royale, podendo ser jogado
+                                individualmente ou em duplas. O objetivo é sobreviver o máximo de tempo possível
+                                enquanto se enfrenta outros jogadores em um mapa que vai diminuindo progressivamente.
+                                Durante a partida, é possível coletar caixas que aumentam o poder do Brawler, tornando-o
+                                mais resistente e forte. Vence o último jogador ou dupla que permanecer em campo.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <p>Made By | Victor G - 2025</p>
+    </footer>
+</body>
 
 </html>

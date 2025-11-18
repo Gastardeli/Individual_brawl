@@ -1,0 +1,210 @@
+main {
+    background-color: #50342C;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 100px;
+}
+
+main .container {
+    width: 100%;
+    height: 100%;
+    padding: 0px 100px;
+}
+
+/* SOBRE INDEX ÍNICIO*/
+main .container .sobre {
+    background-color: white;
+    margin-top: 3%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    border: 3px solid #FF9A00;
+}
+
+main .container .sobre .esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    text-align: justify;
+    width: 70%;
+}
+
+main .container .sobre .esquerda .titulo {
+    font-size: 30px;
+    font-weight: 600;
+    border-left: 2px solid #000000;
+    padding-left: 10px;
+}
+
+main .container .sobre .esquerda .texto {
+    font-size: 20px;
+}
+
+/* SOBRE INDEX TÉRMINO */
+
+/* COMO FUNCIONA INDEX ÍNICIO */
+main .container .como_funciona {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    text-align: center;
+}
+
+main .container .como_funciona .titulo_um {
+    color: white;
+    margin: 5%;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+main .container .como_funciona .boxes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+main .container .como_funciona .boxes .box {
+    background-color: #FFf;
+    width: 30%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border: 3px solid #FF9A00;
+}
+
+main .container .como_funciona .boxes .box img {
+    width: 100px;
+    height: 90px;
+}
+
+main .container .como_funciona .titulo {
+    font-size: 30px;
+    margin-top: 3%;
+    font-weight: 600;
+}
+
+main .container .como_funciona .boxes .box .texto {
+    font-size: 20px;
+    text-align: justify;
+    margin-top: 3%;
+}
+
+/* COMO FUNCIONA INDEX TÉRMINO */
+
+/* MODOS DE JOGO INDEX ÍNICIO*/
+main .container .principais_modos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5%;
+    padding-bottom: 10%;
+}
+
+main .container .principais_modos .titulo_um {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
+}
+
+main .container .principais_modos .sections {
+    display: flex;
+    flex-direction: column;
+}
+
+main .container .principais_modos .sections .sub_sections {
+    display: flex;
+    margin-top: 5%;
+    justify-content: space-between;
+}
+
+main .container .principais_modos .sections .sub_sections .conteudo {
+    width: 65%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+main .container .principais_modos .sections .sub_sections .conteudo .texto {
+    font-size: 20px;
+    color: white;
+    text-align: justify;
+    margin-top: 3%;
+    
+}
+
+main .container .principais_modos .sections .sub_sections .conteudo .titulo {
+    font-size: 30px;
+    color: white;
+    font-weight: 600;
+    border-left: 1px solid white;
+    max-width: 200px;
+    padding-left: 10px;
+}
+
+main .container .principais_modos .sections img {
+    width: 500px;
+    border-radius: 20px;
+    border: 3px solid #FF9A00;
+}
+
+/* MODOS DE JOGO INDEX TÉRMINO*/
+
+/* INÍCIO DA RESPONSIVIDADE */
+@media screen and (max-width: 768px) {
+    main .container .sobre {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 150px;
+    }
+
+    main .container {
+        width: 100%;
+        height: 100%;
+        padding: 0px 20px;
+    }
+
+    main .container .sobre .esquerda {
+        width: 100%;
+    }
+
+    main .container .sobre , .como_funciona, .principais_modos{
+        margin-top: 100px;
+    }
+    main .container .como_funciona .boxes {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    main .texto{
+        font-size: 10px;
+    }
+
+    main .container .como_funciona .boxes .box {
+        margin-bottom: 10px;
+        width: 100%;
+
+    }
+
+    main .container .principais_modos .sections{
+        width: 100%;
+    }
+    main .container .principais_modos .sections .sub_sections {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main .container .principais_modos .sections img {
+        width: 100%;
+        margin-top: 10px;
+    }
+    main .container .principais_modos .sections .sub_sections .conteudo{
+        width: 100%;
+    }
+}
+
+/* TÉRMINO DA RESPONSIVIDADE */

@@ -1,62 +1,73 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+create database brawl;
+use brawl;
 
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
-);
 
 CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50),
+    email VARCHAR(50),
+    senha VARCHAR(50),
+    cpf char(11)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+
+CREATE TABLE funcao (
+    idFuncao INT PRIMARY KEY AUTO_INCREMENT,
+    nomeFuncao VARCHAR(50),
+    CONSTRAINT chkFuncao CHECK (nomeFuncao IN ('Assasino' , 'Controle',
+        'Atirador',
+        'Lutadora',
+        'Suporte',
+        'Tanque')),
+    descricaoFunc VARCHAR(300)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+CREATE TABLE personagem (
+    idPersonagem INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50),
+    trofeus INT,
+    descricao VARCHAR(300),
+    raridade VARCHAR(30),
+    CONSTRAINT chkRaridade CHECK (raridade IN ('Lendário' , 'Épica',
+        'Mítico',
+        'Rara',
+        'Super - raro')),
+    fkFuncao INT,
+    FOREIGN KEY (fkFuncao)
+        REFERENCES funcao (idFuncao)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+
+CREATE TABLE favoritos (
+    fkUsuario INT,
+    FOREIGN KEY (fkUsuario)
+        REFERENCES usuario (id),
+    fkPersonagem INT,
+    FOREIGN KEY (fkPersonagem)
+        REFERENCES personagem (idPersonagem),
+    PRIMARY KEY (fkUsuario , fkPersonagem),
+    dtVoto DATETIME
 );
 
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+insert into funcao values 
+(default,'Assasino','Esses lutadores conseguem encurtar a distância entre eles e seus alvos muito rapidamente. No entanto, sua baixa saúde significa que eles precisam confiar em habilidades evasivas e astúcia para sobreviver na batalha.'),
+(default,'Atirador','Esses lutadores podem lançar projéteis por cima de obstáculos, como se estivessem fazendo uma entrega mortal.'),
+(default,'Controle','Esses lutadores se concentram em dominar o mapa. Sua dependência de ataques em área significa que eles realmente conseguem se manter firmes e até mesmo conquistar o território.'),
+(default,'Lutadora','Os lutadores vêm em todos os formatos e tamanhos, e trazem estilos de luta únicos para a batalha. Seja dominando confrontos corpo a corpo ou causando dano mortal à distância, todos desempenham um papel vital e são designados a uma Classe de Lutador específica.'),
+(default,'Suporte','Esses Brawlers podem ser de grande ajuda! Sua capacidade de curar ou fortalecer aliados com habilidades em batalha pode facilmente influenciar o resultado de uma partida.'),
+(default,'Tanque','Esses lutadores têm muita vida, então eles aguentam um ou dois golpes.');
+
+
+insert into personagem values 
+(default, 'Leon', 821 ,'Um brawler assassino ágil que causa alto dano a curta distância. Sua habilidade de se camuflar permite aproximações furtivas e eliminações rápidas, tornando-o excelente para flanqueios e emboscadas.','Lendário', 1 ),
+(default, 'Emz', 1006,'Uma brawler focada em dano contínuo e controle de área. Seu spray de perfume corrosivo mantém inimigos afastados enquanto causa dano constante, tornando-a ótima para segurar zonas e empurrar adversários.', 'Épica',3 ),
+(default, 'Mortis', 830,'Assassino extremamente móvel que avança com ataques rápidos de curto alcance, ideal para emboscadas e fuga após eliminar alvos.' ,'Mítico', 1 ),
+(default, 'Rico',1124 ,'O Rico é um brawler do tipo “Tiro Preciso” e de raridade Super-Raro. Ele tem com pouca vida e dano moderado, mas ele é único por conta do seu ataque e super, ele usa balas que podem ricochetear nas paredes e continuar percorrendo o mapa.','Rara', 2),
+(default, 'Griff',1146 ,'Brawler de médio alcance focado em dano explosivo com moedas que se espalham, forte tanto de perto quanto de longe.','Épica', 2),
+(default, 'Bibi',1019 ,'Brawler corpo a corpo com alto impacto, capaz de empurrar inimigos com seu ataque carregado e causar grande dano com sua bolha.','Épica', 6),
+(default, 'Gale	', 792,'Brawler de utilidade que usa rajadas de vento para controlar inimigos, empurrar adversários e zonear o campo.','Mítico', 5),
+(default, 'Carl', 932,'Brawler versátil que arremessa seu picarete ricocheteante e usa sua super para avançar girando e causar dano contínuo.','Super - raro', 2),
+(default, 'El Primo', 780,'Lutador corpo a corpo resistente, causa alto dano de perto e usa sua super para iniciar confrontos ou se reposicionar.','Rara', 6),
+(default, '8-Bit', 558,'Brawler de longo alcance com alto dano, porém baixa mobilidade; sua torreta aumenta o dano de toda a equipe.','Super - raro', 2);
+
