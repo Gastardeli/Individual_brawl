@@ -4,7 +4,7 @@ var listaInformacoes =
     ['Mortis', 'Robô', 'Assasino', 'mortis', ' - 830', 'Mítico', 'Assassino extremamente móvel que avança com ataques rápidos de curto alcance, ideal para emboscadas e fuga após eliminar alvos.'],
     ['Rico', 'Soberano', 'Atirador', 'rico', ' - 1124', 'Rara', 'O Rico é um brawler do tipo “Tiro Preciso” e de raridade Super-Raro. Ele tem com pouca vida e dano moderado, mas ele é único por conta do seu ataque e super, ele usa balas que podem ricochetear nas paredes e continuar percorrendo o mapa.'],
     ['Griff', 'Recordista', 'Atirador', 'griff', ' - 1146 - TOP 152° BR', 'Épica', 'Brawler de médio alcance focado em dano explosivo com moedas que se espalham, forte tanto de perto quanto de longe.'],
-    ['Bibi', 'Thor', 'Lutadora', 'bibi', ' - 1019', '', 'Brawler corpo a corpo com alto impacto, capaz de empurrar inimigos com seu ataque carregado e causar grande dano com sua bolha.'],
+    ['Bibi', 'Thor', 'Lutadora', 'bibi', ' - 1019', 'Épica', 'Brawler corpo a corpo com alto impacto, capaz de empurrar inimigos com seu ataque carregado e causar grande dano com sua bolha.'],
     ['Gale', 'Comerciante', 'Suporte', 'gale', ' - 792', 'Mítico', 'Brawler de utilidade que usa rajadas de vento para controlar inimigos, empurrar adversários e zonear o campo.'],
     ['Carl', 'Sultão', 'Atirador', 'Carl', ' - 932', 'Super - raro', 'Brawler versátil que arremessa seu picarete ricocheteante e usa sua super para avançar girando e causar dano contínuo.'],
     ['El Primo', 'Rey', 'Tanque', 'elprimo', ' - 780', 'Rara', 'Lutador corpo a corpo resistente, causa alto dano de perto e usa sua super para iniciar confrontos ou se reposicionar.'],

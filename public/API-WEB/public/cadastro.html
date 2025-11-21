@@ -2,75 +2,75 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="css/cadastro_login.css">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brawl Stars | Cadastro</title>
+  <link rel="stylesheet" href="css/cadastro_login.css">
+  <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="assets/img/LOGO.png" alt="">
-            </div>
-            <div class="pages">
-                <a href="index.html">Home</a>
-                <a href="conta.html">Conta</a>
-                |
-                <div class="red_box">
-                    <a href="login.html">Login</a>
-                    <a href="#" class="now">Cadastro</a>
-                </div>
-            </div>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="assets/img/LOGO.png" alt="">
+      </div>
+      <div class="pages">
+        <a href="index.html">Home</a>
+        <a href="conta.html">Conta</a>
+        |
+        <div class="red_box">
+          <a href="login.html">Login</a>
+          <a href="#" class="now">Cadastro</a>
         </div>
-    </header>
-    <main>
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
+      </div>
+    </div>
+  </header>
+  <main>
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro" style="display: none;">
+          <span id="mensagem_erro"></span>
         </div>
-        <div class="container">
-            <div class="modal">
-                <div class="titulo">
-                    Cadastro
-                </div>
-                <div class="inputs">
-                    <div class="cima">
-                        <div class="um">
-                            <input type="text" placeholder="Nome:" id="nome_input">
-                            <input type="text" placeholder="Email:" id="email_input">
-                        </div>
-                        <div class="dois">
-                            <input type="text" placeholder="CPF:" id="cpf_input">
-                            <input type="text" placeholder="Senha:" id="senha_input">
-                        </div>
-                    </div>
-                    <div class="baixo">
-                        <input type="text" placeholder="Confirmar senha:" id="confirmacao_senha_input">
-                    </div>
-                </div>
-                <div class="botao">
-                    <button onclick="cadastrar()">Cadastre-se</button>
-                </div>
-                <div class="msg">
-                    <p>Ja tem cadastro? faça <a href="login.html">LOGIN</a></p>
-                </div>
+      </div>
+    <div class="container">
+      <div class="modal">
+        <div class="titulo">
+          Cadastro
+        </div>
+        <div class="inputs">
+          <div class="cima">
+            <div class="um">
+              <input type="text" placeholder="Nome:" id="nome_input">
+              <input type="text" placeholder="Email:" id="email_input">
+            </div>
+            <div class="dois">
+              <input type="text" placeholder="CPF:" id="cpf_input">
+              <input type="text" placeholder="Senha:" id="senha_input">
+            </div>
+          </div>
+          <div class="baixo">
+            <input type="text" placeholder="Confirmar senha:" id="confirmacao_senha_input">
+          </div>
+        </div>
+        <div class="botao">
+          <button onclick="cadastrar()">Cadastre-se</button>
+        </div>
+        <div class="msg">
+          <p>Ja tem cadastro? faça <a href="login.html">LOGIN</a></p>
+        </div>
+        <div id="div_aguardar" class="loading-div" style="display: none; margin: 10px 0px;">
+          <img width="50px" height="50px" src="./assets/icon/aguarde-orange.gif" id="loading-gif" />
+        </div>
 
+      </div>
 
-            </div>
-            <div id="div_aguardar" class="loading-div" style="display: none;">
-                <img src="./assets/circle-loading.gif" id="loading-gif" />
-            </div>
-            <div id="div_erros_login"></div>
-        </div>
-    </main>
-    <footer>
-        <p>Made By | Victor G - 2025</p>
-    </footer>
+      <div id="div_erros_login"></div>
+    </div>
+  </main>
+  <footer>
+    <p>Made By | Victor G - 2025</p>
+  </footer>
 </body>
 
 </html>
@@ -100,8 +100,7 @@
       cpfVar == ""
     ) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      mensagem_erro.innerHTML = `(Mensagem de erro para todos os campos em branco) `;
 
       finalizarAguardar();
       return false;
@@ -152,7 +151,7 @@
   }
 
   // Listando empresas cadastradas 
- 
+
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
