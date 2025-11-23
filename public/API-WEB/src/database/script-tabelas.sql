@@ -40,13 +40,14 @@ CREATE TABLE personagem (
 
 
 CREATE TABLE favoritos (
+	idFavorito int auto_increment,
     fkUsuario INT,
     FOREIGN KEY (fkUsuario)
         REFERENCES usuario (id),
     fkPersonagem INT,
     FOREIGN KEY (fkPersonagem)
         REFERENCES personagem (idPersonagem),
-    PRIMARY KEY (fkUsuario , fkPersonagem),
+    PRIMARY KEY (idFavorito, fkUsuario , fkPersonagem),
     dtVoto DATETIME
 );
 
