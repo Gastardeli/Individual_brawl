@@ -3,7 +3,7 @@ var database = require("../database/config");
 
 /**
  * Insere a dupla (ID do Usuário, ID do Personagem) na tabela associativa 'favoritos'.
- * * @param {number} usuarioId - ID do usuário.
+ * @param {number} usuarioId - ID do usuário.
  * @param {number} personagemId - ID do personagem.
  * @returns {Promise<object>} O resultado da execução da query no BD.
  */
@@ -13,7 +13,7 @@ function inserir(usuarioId, personagemId) {
     // Estamos concatenando strings, seguindo o padrão do seu exemplo.
     var instrucaoSql = `
         INSERT INTO favoritos VALUE
-        ('${usuarioId}', '${personagemId}', CURRENT_TIMESTAMP);
+        ( DEFAULT, '${usuarioId}', '${personagemId}', CURRENT_TIMESTAMP);
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

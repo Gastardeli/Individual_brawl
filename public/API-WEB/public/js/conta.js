@@ -35,15 +35,15 @@ select_brawlers.onchange = function () {
             descricao = atual[6] // Descrição
             chegou = true
 
-            if(raridade == 'Lendário'){
+            if (raridade == 'Lendário') {
                 color = 'gold'
-            } else if(raridade == 'Mítico'){
+            } else if (raridade == 'Mítico') {
                 color = 'red'
-            } else if(raridade == 'Épica'){
+            } else if (raridade == 'Épica') {
                 color = 'purple'
-            }else if(raridade == 'Rara'){
+            } else if (raridade == 'Rara') {
                 color = 'green'
-            } else if(raridade == 'Super - raro') {
+            } else if (raridade == 'Super - raro') {
                 color = 'darkgreen'
             }
         }
@@ -92,18 +92,18 @@ select_brawlers.onchange = function () {
         <div class="box">
             <p>${descricao}</p>
         </div>
-    </div>`
+    </div>`;
 }
 
 function salvarFavorito() {
     // 1. Pega o valor do select (o índice/ID do brawler, de 0 a 9)
     // O valor do select representa o ID do personagem que você usará no banco.
-    var personagemId = select_brawlers.value; 
+    var personagemId = Number(select_brawlers.value) + 1; // + 1 pois começa em 0 
 
     // **ASSUNÇÃO CRÍTICA:** // Você PRECISA ter o ID do usuário logado. 
     // No seu ambiente, ele geralmente é salvo em uma variável global ou localStorage.
     // Substitua 'sessionStorage.ID_USUARIO' pela sua forma real de obter o ID do usuário.
-    var usuarioId = sessionStorage.ID_USUARIO; 
+    var usuarioId = sessionStorage.ID_USUARIO;
 
     // Validação básica
     if (personagemId == undefined || usuarioId == undefined) {
@@ -137,7 +137,7 @@ function salvarFavorito() {
                 alert(`Erro ao salvar favorito: ${jsonErro}`);
             }).catch(() => {
                 // Se a resposta não for um JSON, mostra o status
-                 alert(`Erro ao salvar favorito. Status: ${resposta.status}`);
+                alert(`Erro ao salvar favorito. Status: ${resposta.status}`);
             });
         }
     }).catch(function (erro) {
