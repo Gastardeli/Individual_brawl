@@ -81,6 +81,9 @@
 
 
   function cadastrar() {
+
+    
+
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
@@ -90,6 +93,15 @@
     var senhaVar = senha_input.value;
     var cpfVar = cpf_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+     if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      cpfVar == ""
+    ) 
+
 
     // Verificando se há algum campo em branco
     if (

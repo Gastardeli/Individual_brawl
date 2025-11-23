@@ -95,6 +95,57 @@ select_brawlers.onchange = function () {
     </div>`
 }
 
+function salvarFavorito() {
+    // 1. Pega o valor do select (o índice/ID do brawler, de 0 a 9)
+    // O valor do select representa o ID do personagem que você usará no banco.
+    var personagemId = select_brawlers.value; 
+
+    // **ASSUNÇÃO CRÍTICA:** // Você PRECISA ter o ID do usuário logado. 
+    // No seu ambiente, ele geralmente é salvo em uma variável global ou localStorage.
+    // Substitua 'sessionStorage.ID_USUARIO' pela sua forma real de obter o ID do usuário.
+    var usuarioId = sessionStorage.ID_USUARIO; 
+
+    // Validação básica
+    if (personagemId == undefined || usuarioId == undefined) {
+        // Use um elemento de UI para exibir a mensagem, e não um alert()
+        alert("Selecione um personagem e certifique-se de que o usuário está logado.");
+        return;
+    }
+
+    // 2. Chama a API
+    fetch("/favoritos/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            personagemId: personagemId,
+            usuarioId: usuarioId // Enviamos o ID do usuário (baseado na ASSUNÇÃO)
+        })
+    }).then(function (resposta) {
+        console.log("Resposta da API:", resposta);
+
+        if (resposta.ok) {
+            // Sucesso (Status 201)
+            resposta.text().then(texto => {
+                alert(`Sucesso! ${texto}`);
+            });
+        } else {
+            // Erro (Status 400 ou 500)
+            resposta.json().then(jsonErro => {
+                // Tentativa de pegar a mensagem de erro formatada
+                alert(`Erro ao salvar favorito: ${jsonErro}`);
+            }).catch(() => {
+                // Se a resposta não for um JSON, mostra o status
+                 alert(`Erro ao salvar favorito. Status: ${resposta.status}`);
+            });
+        }
+    }).catch(function (erro) {
+        console.log(`#ERRO: ${erro}`);
+        alert("Erro de conexão com o servidor. Verifique a rede ou a rota da API.");
+    });
+}
+
 
 
 
