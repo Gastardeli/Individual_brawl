@@ -1,0 +1,71 @@
+.modal_erro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_erro .conteudoModal {
+    border: 3px solid orange;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    flex-direction: column;
+    min-height: 50vh;
+    align-items: center;
+    background-color: white;
+    position: relative;
+}
+
+.modal_erro .conteudoModal button {
+    width: 10%;
+    background-color: orange;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.modal_erro .conteudoModal button:hover {
+    background-color: rgba(255, 166, 0, 0.589);
+    cursor: pointer;
+}
+
+.modal_erro .conteudoModal .img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.modal_erro .conteudoModal .img img {
+    width: 200px;
+}
+
+.modal_erro .conteudoModal .titulo {
+    font-size: 30px;
+    border-bottom: 2px solid orange;
+}
+
+.modal_erro .conteudoModal .mensagem {
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    z-index: 99;
+}
+
+.modal_erro .conteudoModal .mensagem #conteudoMensagem {
+    width: 80%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    overflow-wrap: break-word;
+}

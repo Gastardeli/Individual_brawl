@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="css/cadastro_login.css">
   <link rel="stylesheet" href="css/style.css">
 
+  <link rel="stylesheet" href="teste_modal.css">
+  <script src="js/modal.js"></script>
+
 </head>
 
 <body>
@@ -28,11 +31,20 @@
     </div>
   </header>
   <main>
-      <div class="alerta_erro">
-        <div class="card_erro" id="cardErro" style="display: none;">
-          <span id="mensagem_erro"></span>
+    <div class="modal_erro" id="modal_erro" style="display: none;">
+      <div class="conteudoModal">
+        <div class="titulo">Aviso!</div>
+        <div class="img">
+          <img src="assets/img/nita.png" alt="">
         </div>
+        <div class="mensagem">
+          <div id="conteudoMensagem">
+
+          </div>
+        </div>
+        <button onclick="sumirMensagem()">Ok</button>
       </div>
+    </div>
     <div class="container">
       <div class="modal">
         <div class="titulo">
@@ -46,11 +58,11 @@
             </div>
             <div class="dois">
               <input type="text" placeholder="CPF:" id="cpf_input">
-              <input type="text" placeholder="Senha:" id="senha_input">
+              <input type="password" placeholder="Senha:" id="senha_input">
             </div>
           </div>
           <div class="baixo">
-            <input type="text" placeholder="Confirmar senha:" id="confirmacao_senha_input">
+            <input type="password" placeholder="Confirmar senha:" id="confirmacao_senha_input">
           </div>
         </div>
         <div class="botao">
@@ -58,6 +70,7 @@
         </div>
         <div class="msg">
           <p>Ja tem cadastro? faça <a href="login.html">LOGIN</a></p>
+          <div id="sucesso"></div>
         </div>
         <div id="div_aguardar" class="loading-div" style="display: none; margin: 10px 0px;">
           <img width="50px" height="50px" src="./assets/icon/aguarde-orange.gif" id="loading-gif" />
@@ -77,12 +90,11 @@
 
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-
+  
 
   function cadastrar() {
 
-    
+
 
     // aguardar();
 
@@ -91,16 +103,58 @@
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
-    var cpfVar = cpf_input.value;
+    var cpfVar = Number(cpf_input.value);
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
-     if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      cpfVar == ""
-    ) 
+    var caracteresEspeciais = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '/', '<', '>', '?', '^', '|']
+    var incluiCaracater = false
+    var temMinuscula = false
+    var temMaiscula = false
+    var TemtamanhoSenha = false
+    var senhasCoecidem = false
+    // se tem MAISCULO senha != senha.tolowercase
+    // se tem MINUSCULA senha != senha.toupercase
+    // senha.length < 8 `
+    conteudoMensagem.innerHTML = `Sua senha deve atender as todos os requisitos: <br><br>`
+
+    if (senhaVar != senhaVar.toLowerCase()) {
+      temMaiscula = true
+      conteudoMensagem.innerHTML += `<p>Sua senha possui <span style="color: green">POSSUI</span> caracteres maisculos</p><br>`
+    } else {
+      conteudoMensagem.innerHTML += `<p>Sua senha <span style="color: red">NÃO POSSUI</span> caracteres maisculos</p><br>`
+    }
+
+    if (senhaVar != senhaVar.toUpperCase()) {
+      temMinuscula = true
+      conteudoMensagem.innerHTML += `<p>Sua senha <span style="color: green">POSSUI</span> caracteres minúsculos</p><br>`
+    } else {
+      conteudoMensagem.innerHTML += `<p>Sua senha <span style="color: red">NÃO POSSUI</span> caracteres minúsculos</p><br>`
+    }
+
+    var tamanhoSenha = (senhaVar.length)
+
+    if (tamanhoSenha < 8) {
+      conteudoMensagem.innerHTML += `<p>Sua senha <span style="color: red">NÃO POSSUI</span> pelo menos 8 caracteres</p><br>`
+    } else {
+      TemtamanhoSenha = true
+      conteudoMensagem.innerHTML += `<p>Sua senha <span style="color: green">POSSUI</span> pelo menos 8 caracteres</p><br>`
+    }
+
+    for (var i = 0; i < caracteresEspeciais.length; i++) {
+      var atual = caracteresEspeciais[i]
+      if (senhaVar.includes(atual)) {
+        incluiCaracater = true
+        i = caracteresEspeciais.length
+        conteudoMensagem.innerHTML += `<p>Sua senha <span style="color: green">POSSUI</span> caracteres especiais</p><br>`
+      }
+    }
+    if (incluiCaracater == false) {
+      conteudoMensagem.innerHTML += `<p>Sua senha <span style="color: red">NÃO POSSUI</span> caracteres especiais</p><br>`
+    }
+
+
+
+
 
 
     // Verificando se há algum campo em branco
@@ -111,60 +165,65 @@
       confirmacaoSenhaVar == "" ||
       cpfVar == ""
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = `(Mensagem de erro para todos os campos em branco) `;
-
-      finalizarAguardar();
-      return false;
+      conteudoMensagem.innerHTML = `Ops! Parece que você deixou algum campo em branco! tente novamente`;
+      chamarModal();
+    } else if (incluiCaracater == false ||
+      temMaiscula == false ||
+      temMinuscula == false ||
+      TemtamanhoSenha == false) {
+      chamarModal();
+    } else if (senhaVar != confirmacaoSenhaVar) {
+      conteudoMensagem.innerHTML = `Ops! Parece que suas senhas não coincidem`;
+      chamarModal();
+    } else if (isNaN(cpfVar)) {
+      conteudoMensagem.innerHTML = `Certifique-se que seu CPF contém apenas números e 11 dígitos`;
+      chamarModal();
     } else {
-      setInterval(sumirMensagem, 5000);
-    }
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        cpfServer: cpfVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-          div_aguardar.style.display = 'flex';
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nomeVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+          cpfServer: cpfVar
+        }),
       })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
 
-    return false;
+          if (resposta.ok) {
+            div_aguardar.style.display = 'flex';
+            sucesso.innerHTML =
+              `<br> Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
+
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
+          } else {
+            conteudoMensagem.innerHTML = `Ops! Parece que Houve um erro ao tentar realizar o cadastro!`;
+            chamarModal();
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+        });
+
+      return false;
+    }
   }
 
   // Listando empresas cadastradas 
 
   function sumirMensagem() {
-    cardErro.style.display = "none";
+    modal_erro.style.display = "none";
   }
 </script>

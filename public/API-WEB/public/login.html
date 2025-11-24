@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link rel="stylesheet" href="teste_modal.css">
+    <script src="js/modal.js"></script>
 </head>
 
 <body>
@@ -35,11 +38,22 @@
     </header>
     <main>
         <div class="container">
-            <div class="alerta_erro">
-                <div class="card_erro" id="cardErro" style="display: none;">
-                    <span id="mensagem_erro"></span>
+
+            <div class="modal_erro" id="modal_erro" style="display: none;">
+                <div class="conteudoModal">
+                    <div class="titulo">Aviso!</div>
+                    <div class="img">
+                        <img src="assets/img/nita.png" alt="">
+                    </div>
+                    <div class="mensagem">
+                        <div id="conteudoMensagem">
+
+                        </div>
+                    </div>
+                    <button onclick="sumirMensagem()">Ok</button>
                 </div>
             </div>
+
             <div class="modal">
                 <div class="titulo">
                     Login
@@ -58,10 +72,10 @@
 
 
                 <div class="msg">
-                    <p>Ainda não conta? faça <a href="cadastro.html">CADASTRO</a></p>
+                    <p>Não possui conta? faça <a href="cadastro.html">CADASTRO</a></p>
                 </div>
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                <div id="div_aguardar" class="loading-div" style="display: none;"  >
+                    <img width="50px" src="assets/icon/aguarde-orange.gif" id="loading-gif" >
                 </div>
             </div>
             <div id="div_erros_login"></div>
@@ -78,19 +92,17 @@
 
 
     function entrar() {
-        aguardar();
 
+        
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            conteudoMensagem.innerHTML = `Ops! parece que temos campos em branco - Veja se inseriu seus dados corretamente`;
+            chamarModal();
             return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
+        }else{
+            div_aguardar.style.display = "flex";
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -106,6 +118,8 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
+            
+
             console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
@@ -114,18 +128,23 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json[0].email;
+                    sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json[0].nome;
-                    sessionStorage.ID_USUARIO =  json[0].id;
+                    sessionStorage.ID_USUARIO = json[0].id;
                 });
+                div_aguardar.style.display = 'flex';
+                setTimeout(() => {
+                 window.location = "login.html";
+                }, "2000");
+                
 
             } else {
-
+                conteudoMensagem.innerHTML = `Ops! Seu email ou senha estão incorretos! tente novamente`;
+                chamarModal();
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 
@@ -137,7 +156,8 @@
     }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
+        modal_erro.style.display = "none"
+        div_aguardar.style.display = "none";
     }
 
 </script>
