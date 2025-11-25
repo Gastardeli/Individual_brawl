@@ -2,15 +2,13 @@
 var database = require("../database/config");
 
 /**
- * Insere a dupla (ID do Usuário, ID do Personagem) na tabela associativa 'favoritos'.
- * @param {number} usuarioId - ID do usuário.
- * @param {number} personagemId - ID do personagem.
- * @returns {Promise<object>} O resultado da execução da query no BD.
+
+ * @param {number} usuarioId 
+ * @param {number} personagemId 
+ * @returns {Promise<object>} 
  */
 function inserir(usuarioId, personagemId) {
-    // 💡 Montando a instrução SQL para inserção.
-    // Usamos fkUser e fkPerso como nomes de colunas conforme o seu cenário de FKs.
-    // Estamos concatenando strings, seguindo o padrão do seu exemplo.
+
     var instrucaoSql = `
         INSERT INTO favoritos VALUE
         ( DEFAULT, '${usuarioId}', '${personagemId}', CURRENT_TIMESTAMP);

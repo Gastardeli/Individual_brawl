@@ -134,7 +134,8 @@
                 });
                 div_aguardar.style.display = 'flex';
                 setTimeout(() => {
-                 window.location = "login.html";
+                    conteudoMensagem.innerHTML = `Login realizado com sucesso!`;
+                    chamarModal();
                 }, "2000");
                 
 
