@@ -23,7 +23,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="../assets/img/LOGO.png" alt="">
+                <img src="./assets/img/LOGO.png" alt="">
             </div>
             <div class="pages">
                 <a href="../index.html">Home</a>
@@ -137,6 +137,9 @@
                     conteudoMensagem.innerHTML = `Login realizado com sucesso!`;
                     chamarModal();
                 }, "2000");
+                setTimeout(() => {
+                    window.location.href = '/conta.html'
+                }, "1000");
                 
 
             } else {
@@ -156,9 +159,6 @@
         return false;
     }
 
-    function sumirMensagem() {
-        modal_erro.style.display = "none"
-        div_aguardar.style.display = "none";
-    }
+   
 
 </script>

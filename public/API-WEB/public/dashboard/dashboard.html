@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>Brawl Stars | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -38,11 +38,6 @@
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
 
             <div class="btn-nav">
 
@@ -63,11 +58,26 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
-            </div>
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+            <div class="kpis">
+                <p>
+                    Kpi's
+                </p>
+                <div class="boxes">
+                    <div class="box" id="menosvotado">
+                        <div class="titulo">Menos votado</div>
+                        <div class="nome">El primo</div>
+                        <div class="dados">5</div>
+                    </div>
+                    <div class="box" id="votostotais">
+                        <div class="titulo">Votos totais</div>
+                        <div class="dados">2000</div>
+                    </div>
+                    <div class="box" id="maisvotado">
+                        <div class="titulo">Mais votado</div>
+                        <div class="nome">Emz</div>
+                        <div class="dados">10 </div>
+                    </div>
+                </div>
             </div>
             <div id="graficos">
             </div>
@@ -205,14 +215,14 @@
             labels: labels,
             datasets: [{
                 label: 'Umidade',
-                data: [1,2,4,5,6,7,8],
+                data: [1, 2, 4, 5, 6, 7, 8],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
             },
             {
                 label: 'Temperatura',
-                data: [1,2,3,4,5,6,7,8],
+                data: [1, 2, 3, 4, 5, 6, 7, 8],
                 fill: false,
                 borderColor: 'rgb(199, 52, 52)',
                 tension: 0.1

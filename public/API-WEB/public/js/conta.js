@@ -33,7 +33,6 @@ select_brawlers.onchange = function () {
             trofeus = atual[4] // Troféus
             raridade = atual[5] // Raridade
             descricao = atual[6] // Descrição
-            chegou = true
 
             if (raridade == 'Lendário') {
                 color = 'gold'
@@ -46,22 +45,22 @@ select_brawlers.onchange = function () {
             } else if (raridade == 'Super - raro') {
                 color = 'darkgreen'
             }
-        }
-        if (chegou) {
+
             i = listaInformacoes.length
         }
+
     }
     box.innerHTML =
         `<div class="cima">
         <div class="personagem">
             <div class="titulo">${nome} ${sobrenome}</div>
-            <img src="../assets/imgs_select/${caminho}/image.png" class="img_perso">
+            <img src="./assets/imgs_select/${caminho}/image.png" class="img_perso">
         </div>
         <div class="direita">
             <div class="trofeus">
                 <div class="titulo">Troféus</div>
                 <div class="box_num">
-                    <img src="../assets/icon/trofeu_icon.png" alt="" class="icon_trofeu">
+                    <img src="./assets/icon/trofeu_icon.png" alt="" class="icon_trofeu">
                     <div class="num">${trofeus}</div>
                 </div>
             </div>
@@ -70,12 +69,12 @@ select_brawlers.onchange = function () {
                 <div class="tipo_funcao"> ${funcao}</div>
             </div>
             <div class="box_poderes">
-                <img src="../assets/imgs_select/${caminho}/hipercarga.png" alt="" class="um">
-                <img src="../assets/imgs_select/${caminho}/estrela.png" alt="" class="dois">
-                <img src="../assets/imgs_select/${caminho}/acessorio.png" alt="" class="dois">
+                <img src="./assets/imgs_select/${caminho}/hipercarga.png" alt="" class="um">
+                <img src="./assets/imgs_select/${caminho}/estrela.png" alt="" class="dois">
+                <img src="./assets/imgs_select/${caminho}/acessorio.png" alt="" class="dois">
                 <div class="engrenagens">
-                    <img src="../assets/imgs_select/${caminho}/engrenagem1.png" alt="" class="tres">
-                    <img src="../assets/imgs_select/${caminho}/engrenagem2.png" alt="" class="tres">
+                    <img src="./assets/imgs_select/${caminho}/engrenagem1.png" alt="" class="tres">
+                    <img src="./assets/imgs_select/${caminho}/engrenagem2.png" alt="" class="tres">
                 </div>
             </div>
             <div class="raridade">
@@ -101,43 +100,46 @@ function salvarFavorito() {
 
     var usuarioId = sessionStorage.ID_USUARIO;
 
-
     if (personagemId == undefined || usuarioId == undefined) {
-        alert("Selecione um personagem e certifique-se de que o usuário está logado.");
+        conteudoMensagem.innerHTML += `<p>Certifique-se que está logado e que selecionou algum personagem</p><br>`
+        chamarModal()
         return;
+    } 
+        fetch("/favoritos/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                personagemId: personagemId,
+                usuarioId: usuarioId
+            })
+        }).then(function (resposta) {
+            console.log("Resposta da API:", resposta);
+
+            if (resposta.ok) {
+                conteudoMensagem2.innerHTML += `<p>Seu personagem foi favoritado com sucesso</p><br>`
+                chamarModal2()
+            } else {
+
+                resposta.json().then(jsonErro => {
+
+                    alert(`Erro ao salvar favorito: ${jsonErro}`);
+                }).catch(() => {
+
+                    alert(`Erro ao salvar favorito. Status: ${resposta.status}`);
+                });
+            }
+        }).catch(function (erro) {
+            console.log(`#ERRO: ${erro}`);
+            alert("Erro de conexão com o servidor. Verifique a rede ou a rota da API.");
+        });
     }
 
 
-    fetch("/favoritos/cadastrar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            personagemId: personagemId,
-            usuarioId: usuarioId 
-        })
-    }).then(function (resposta) {
-        console.log("Resposta da API:", resposta);
-
-        if (resposta.ok) {
-        
-            resposta.text().then(texto => {
-                alert(`Sucesso! ${texto}`);
-            });
-        } else {
-          
-            resposta.json().then(jsonErro => {
-               
-                alert(`Erro ao salvar favorito: ${jsonErro}`);
-            }).catch(() => {
-             
-                alert(`Erro ao salvar favorito. Status: ${resposta.status}`);
-            });
-        }
-    }).catch(function (erro) {
-        console.log(`#ERRO: ${erro}`);
-        alert("Erro de conexão com o servidor. Verifique a rede ou a rota da API.");
+function redirecionar() {
+    setTimeout(() => {
+        window.location = "./dashboard/dashboard.html";
     });
 }
 

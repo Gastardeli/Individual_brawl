@@ -1,11 +1,15 @@
 /* pagina mural */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+* {
+  font-family: "Lexend", 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 .label-captura {
@@ -109,11 +113,23 @@ body {
   margin-left: 30px;
 }
 
-/* pagina graficos */
 
-.dash-header {
-  background-color: #212124;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* pagina graficos */
 
 .dash {
   width: 80%;
@@ -124,6 +140,76 @@ body {
   height: 100vh;
   overflow: auto;
 }
+
+.dash .kpis {
+  display: flex;
+  width: 100%;
+  height: 25%;
+  flex-direction: column;
+  text-align: center;
+}
+
+.dash .kpis p {
+  font-size: 40px;
+  color: #fff;
+  margin: 0;
+  margin: 2% 0px;
+}
+
+.dash .kpis .boxes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dash .kpis .boxes .box {
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid #FF9A00;
+  width: 25%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+
+.dash .kpis .boxes .box .titulo {
+  color: #000;
+  font-size: 25px;
+  margin-top: 9%;
+  margin-bottom: 7%;
+  
+}
+
+.dash .kpis .boxes .box .nome,
+.dados {
+  font-size: 20px;
+}
+
+.dash .kpis .boxes .box .dados {
+  font-size: 25px;
+  color: #FF9A00;
+  margin-bottom: 7%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .area-parametros-alerta {
   /* border: 2px solid pink; */
@@ -392,7 +478,8 @@ canvas {
   text-align: center;
   padding: 2% 5%;
 }
-.btn-nav:hover{
+
+.btn-nav:hover {
   background-color: #ff99008b;
 }
 
@@ -404,9 +491,10 @@ canvas {
   text-align: center;
   padding: 2% 5%;
 }
-.btn-nav-white:hover{
-   background-color: #ff99008b;
-   color: white;
+
+.btn-nav-white:hover {
+  background-color: #ff99008b;
+  color: white;
 }
 
 .btn-nav-white h3 {
@@ -433,6 +521,7 @@ canvas {
   margin-bottom: 100px;
   cursor: pointer;
 }
-.btn-logout:hover{
+
+.btn-logout:hover {
   background-color: rgba(255, 166, 0, 0.507);
 }

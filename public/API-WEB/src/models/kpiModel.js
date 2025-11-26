@@ -39,6 +39,7 @@ function menosVotado(){
             favoritos AS f ON p.idPersonagem = f.fkPersonagem
         GROUP BY p.idPersonagem , p.nome
         HAVING COUNT(f.fkPersonagem) > 0 
+        ORDER BY p.nome ASC
         LIMIT 1; 
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
