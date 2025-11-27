@@ -101,7 +101,7 @@ function salvarFavorito() {
     var usuarioId = sessionStorage.ID_USUARIO;
 
     if (personagemId == undefined || usuarioId == undefined) {
-        conteudoMensagem.innerHTML += `<p>Certifique-se que está logado e que selecionou algum personagem</p><br>`
+        conteudoMensagem.innerHTML = `<p>Certifique-se que está logado e que selecionou algum personagem</p><br>`
         chamarModal()
         return;
     } 
@@ -118,7 +118,7 @@ function salvarFavorito() {
             console.log("Resposta da API:", resposta);
 
             if (resposta.ok) {
-                conteudoMensagem2.innerHTML += `<p>Seu personagem foi favoritado com sucesso</p><br>`
+                conteudoMensagem2.innerHTML = `<p>Seu personagem foi favoritado com sucesso</p><br>`
                 chamarModal2()
             } else {
 

@@ -123,20 +123,19 @@
 
   
     function popularKpis(data) {
+    var totalVotos = data.votosTotais[0]['Quantidade de votos'];
+ 
+    document.querySelector('#votostotais .dados').innerHTML = totalVotos;
 
-    const totalVotos = data.votosTotais[0]['Quantidade de votos'];
-    document.querySelector('#votostotais .dados').textContent = totalVotos;
+    var maisVotadoNome = data.maisVotado[0]['Mais votado'];
+    var maisVotadoVotos = data.maisVotado[0]['Quantidade de votos'];
+    document.querySelector('#maisvotado .nome').innerHTML = maisVotadoNome;
+    document.querySelector('#maisvotado .dados').innerHTML = maisVotadoVotos;
 
-
-    const maisVotadoNome = data.maisVotado[0]['Mais votado'];
-    const maisVotadoVotos = data.maisVotado[0]['Quantidade de votos'];
-    document.querySelector('#maisvotado .nome').textContent = maisVotadoNome;
-    document.querySelector('#maisvotado .dados').textContent = maisVotadoVotos;
-
-    const menosVotadoNome = data.menosVotado[0]['Menos votado'];
-    const menosVotadoVotos = data.menosVotado[0]['Quantidade de votos'];
-    document.querySelector('#menosvotado .nome').textContent = menosVotadoNome;
-    document.querySelector('#menosvotado .dados').textContent = menosVotadoVotos;
+    var menosVotadoNome = data.menosVotado[0]['Menos votado'];
+    var menosVotadoVotos = data.menosVotado[0]['Quantidade de votos'];
+    document.querySelector('#menosvotado .nome').innerHTML = menosVotadoNome;
+    document.querySelector('#menosvotado .dados').innerHTML = menosVotadoVotos;
 }
 
 

@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 function votosTotais() {
-    
+
     var instrucaoSql = `
         SELECT 
         COUNT(f.fkPersonagem) AS 'Quantidade de votos'
@@ -12,7 +12,7 @@ function votosTotais() {
     return database.executar(instrucaoSql);
 }
 
-function maisVotado(){
+function maisVotado() {
     var instrucaoSql = `
         SELECT 
             p.nome AS 'Mais votado',
@@ -28,7 +28,7 @@ function maisVotado(){
     return database.executar(instrucaoSql);
 }
 
-function menosVotado(){
+function menosVotado() {
     var instrucaoSql = `
        SELECT 
             p.nome AS 'Menos votado',
@@ -38,9 +38,9 @@ function menosVotado(){
                 JOIN
             favoritos AS f ON p.idPersonagem = f.fkPersonagem
         GROUP BY p.idPersonagem , p.nome
-        HAVING COUNT(f.fkPersonagem) > 0 
-        ORDER BY p.nome ASC
-        LIMIT 1; 
+        HAVING COUNT(f.fkPersonagem) > 0 /* Mostra apenas aqueles que possuem votos */
+        ORDER BY 'Quantidade de votos' ASC
+        limit 1; 
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

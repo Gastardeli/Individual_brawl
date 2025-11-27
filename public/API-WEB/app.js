@@ -26,6 +26,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 
 var favoritosRouter = require("./src/routes/favoritos");
 var kpisRouter = require("./src/routes/kpis")
+var graficosRouter = require("./scr/routes/graficos")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -43,7 +44,9 @@ app.use("/usuarios", usuarioRouter);
 //
 
 app.use("/favoritos", favoritosRouter);
-app.use("/kpis" , kpisRouter);
+app.use("/kpis", kpisRouter);
+app.use("/graficos", graficosRouter);
+
 
 app.listen(PORTA_APP, function () {
     console.log(`
