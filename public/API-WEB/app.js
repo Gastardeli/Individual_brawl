@@ -26,7 +26,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 
 var favoritosRouter = require("./src/routes/favoritos");
 var kpisRouter = require("./src/routes/kpis")
-var graficosRouter = require("./scr/routes/graficos")
+var graficosRouter = require("./src/routes/graficos")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,12 +36,6 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-
-//
-//app.use("/avisos", avisosRouter);
-//app.use("/medidas", medidasRouter);
-//app.use("/aquarios", aquariosRouter);
-//
 
 app.use("/favoritos", favoritosRouter);
 app.use("/kpis", kpisRouter);

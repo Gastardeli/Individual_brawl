@@ -16,12 +16,13 @@ function maisVotado() {
     var instrucaoSql = `
         SELECT 
             p.nome AS 'Mais votado',
-            COUNT(f.fkPersonagem) AS 'Quantidade de votos' 
+            COUNT(f.fkPersonagem) AS 'Quantidade de votos' /* Retirar esse linha para mostrar só o nome*/
         FROM
             personagem AS p
-                JOIN 
+                JOIN /* left  - ADICIONA TODOS OS PERSONAGENS */
             favoritos AS f ON p.idPersonagem = f.fkPersonagem
         GROUP BY p.nome
+        ORDER BY COUNT(f.fkPersonagem) DESC
         LIMIT 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -39,8 +40,8 @@ function menosVotado() {
             favoritos AS f ON p.idPersonagem = f.fkPersonagem
         GROUP BY p.idPersonagem , p.nome
         HAVING COUNT(f.fkPersonagem) > 0 /* Mostra apenas aqueles que possuem votos */
-        ORDER BY 'Quantidade de votos' ASC
-        limit 1; 
+        ORDER BY COUNT(f.fkPersonagem) Asc
+        limit 1; /* limita apenas a um*/
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

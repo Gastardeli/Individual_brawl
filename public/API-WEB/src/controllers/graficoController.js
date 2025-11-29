@@ -2,7 +2,7 @@
 
 var graficoModel = require("../models/graficoModel");
 
-function plotarGraficos(req, res) {
+function plotarGrafico(req, res) {
 
 
     graficoModel.graficoPersonagens()
@@ -31,5 +31,5 @@ function plotarGraficos(req, res) {
 }
 
 module.exports = {
-    plotarGraficos,
+    plotarGrafico,
 };
