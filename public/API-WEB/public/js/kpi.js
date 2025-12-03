@@ -6,7 +6,6 @@ function buscarDadosKpi() {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados dos KPIs recebidos: ${JSON.stringify(resposta)}`);
-
                     popularKpis(resposta);
                 });
             } else {

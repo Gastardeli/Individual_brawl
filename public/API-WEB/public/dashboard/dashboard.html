@@ -19,14 +19,11 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-    <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
    <script src="../js/kpi.js"></script>
 
 </head>
-
-<!-- <body onload=" atualizarFeed()"> -->
 
 <body onload="obterDadosGrafico(1)">
 
@@ -40,15 +37,11 @@
 
 
             <div class="btn-nav">
-
                 <h3>Gráficos</h3>
-
             </div>
 
-        
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
+            <div class="btn-logout">
+                <h3> <a href="../conta.html">Sair</a></h3>
             </div>
 
         </div>
@@ -124,12 +117,8 @@
             });
     }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
 
-
-    function plotarGrafico(resposta, idItem) { // 'resposta' é o array de personagens
+    function plotarGrafico(resposta, idItem) { 
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -153,25 +142,23 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-        // O loop deve usar 'resposta.length', não 'dadosPersonagens.length'
+
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-
             labels.push(registro['Nome do personagem']);
             dados.datasets[0].data.push(registro['Número de votos']);
-      
         }
 
-        const config = {
+        var config = {
             type: 'bar',
             data: dados,
             options: {
                 plugins: {
                     legend: {
                         labels: {
-                            color: '#ffffff', // Cor da legenda
+                            color: '#ffffff',
                             font: {
-                                size: 14 // Tamanho da fonte da legenda
+                                size: 14 
                             }
                         }
                     }
@@ -184,7 +171,7 @@
                                 size: 16
                             },
                              callback: function(value) {
-                            if (value % 1 === 0) { // Se o valor for um número inteiro
+                            if (value % 1 === 0) { 
                                 return value;
                             }
                         }
@@ -215,11 +202,6 @@
         setTimeout(() => atualizarGrafico(idItem, dados, myChart), 2000);
     }
 
-    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idItem, dados, myChart) {
 
         fetch(`/graficos/plotarGrafico/${idItem}`, { cache: 'no-store' }).then(function (response) {
@@ -227,7 +209,7 @@
                 response.json().then(function (respostaCompleta) {
 
 
-                    const dadosPersonagens = respostaCompleta.graficoPersonagens;
+                    var dadosPersonagens = respostaCompleta.graficoPersonagens;
 
                     if (dadosPersonagens.length === 0) {
                         console.warn("Array de personagens vazio, não é possível atualizar o gráfico.");
@@ -235,12 +217,12 @@
                         return;
                     }
 
-                    const novoRegistro = dadosPersonagens[dadosPersonagens.length - 1];
+                    var novoRegistro = dadosPersonagens[dadosPersonagens.length - 1];
 
-                    const novoMomento = novoRegistro['Nome do personagem'];
-                    const novoVoto = novoRegistro['Número de votos'];
+                    var novoMomento = novoRegistro['Nome do personagem'];
+                    var novoVoto = novoRegistro['Número de votos'];
 
-                    const novaTemperatura = 0;
+                    var novaTemperatura = 0;
 
 
 

@@ -39,9 +39,8 @@ function menosVotado() {
                 JOIN
             favoritos AS f ON p.idPersonagem = f.fkPersonagem
         GROUP BY p.idPersonagem , p.nome
-        HAVING COUNT(f.fkPersonagem) > 0 /* Mostra apenas aqueles que possuem votos */
         ORDER BY COUNT(f.fkPersonagem) Asc
-        limit 1; /* limita apenas a um*/
+        limit 1; 
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
